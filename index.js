@@ -66,10 +66,10 @@ module.exports = function critcmarkup_plugin(md) {
     return false;
   });
 
-    /**
-     * CriticMarkup renderer
-     */
-  md.renderer.rules['critic-markup'] = (tokens, idx)=> {
+  /**
+   * CriticMarkup renderer
+   */
+  md.renderer.rules['critic-markup'] = (tokens, idx) => {
     const token = tokens[idx],
           tag = token.tag,
           content = token.content;
@@ -81,12 +81,12 @@ module.exports = function critcmarkup_plugin(md) {
     } else if (tag === '==') {
       return `<mark>${content}</mark>`;
     } else if (tag === '>>') {
-      return `<span style="display:none">${content}</span>`;
+      return `<aside>${content}</aside>`;
     }  // {~~[text1]~>[text2]~~}
     const arr = content.split('~>');
     if (arr.length === 2) {
       return `<del>${arr[0]}</del><ins>${arr[1]}</ins>`;
     }
-    return '<code>Error: ~> not found.</code>';
+    throw new Error(`Error: '~>' not found in critic markup chunk {~~${content}--}`);
   };
 };
