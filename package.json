@@ -1,28 +1,51 @@
 {
-  "name": "markdown-it-criticmarkup",
-  "version": "0.0.1",
+  "name": "@gerhobbelt/markdown-it-criticmarkup",
+  "version": "0.0.1-1",
   "description": "Markdown-It plugin for criticmarkup support",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
+    "markdown-it-plugin",
     "markdown-it",
     "criticmarkup"
   ],
   "author": "Wafer Li",
+  "repository": "GerHobbelt/markdown-it-criticmarkup",
   "license": "ISC",
-  "dependencies": {
-    "markdown-it": "^8.4.0",
-    "markdown-it-footnote": "^3.0.1",
-    "markdown-it-ins": "^2.0.0",
-    "markdown-it-katex": "^2.0.3"
+  "source": "index.js",
+  "main": "index.js",
+  "module": "dist/markdown-it.mjs",
+  "engines": {
+    "node": ">=10"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:wafer-li/markdown-it-criticmarkup.git"
+  "scripts": {
+    "build": "make",
+    "test": "make test",
+    "todo": "make todo",
+    "clean": "make clean",
+    "superclean": "make superclean",
+    "doc": "make doc",
+    "lint": "make lint",
+    "lintfix": "make lintfix",
+    "cov": "make report-coverage",
+    "pub": "npm publish --access public"
   },
-  "bugs": {
-    "url": "https://github.com/wafer-li/markdown-it-criticmarkup/issues"
-  }
+  "devDependencies": {
+    "@gerhobbelt/markdown-it": "10.0.0-34",
+    "@gerhobbelt/markdown-it-testgen": "0.1.6-7",
+    "browserify": "16.5.1",
+    "chai": "4.2.0",
+    "cross-env": "7.0.2",
+    "eslint": "7.0.0",
+    "mocha": "7.1.2",
+    "nyc": "15.0.1",
+    "rollup": "2.9.0",
+    "rollup-plugin-commonjs": "10.1.0",
+    "rollup-plugin-json": "4.0.0",
+    "rollup-plugin-node-resolve": "5.2.0",
+    "terser": "4.6.13"
+  },
+  "reporter": [
+    "lcov",
+    "text",
+    "text-summary"
+  ]
 }
