@@ -8,14 +8,14 @@
   */
 
 
-'use strict';
+
 
 
 
 /**
  * CriticMarkup rule
  */
-module.exports = function critcmarkup_plugin(md) {
+export default function critcmarkup_plugin(md) {
   md.inline.ruler.before('strikethrough', 'critic-markup', (state, silent)=> {
     const src = state.src,
           pos = state.pos;
@@ -89,4 +89,4 @@ module.exports = function critcmarkup_plugin(md) {
     }
     throw new Error(`Error: '~>' not found in critic markup chunk {~~${content}--}`);
   };
-};
+}
