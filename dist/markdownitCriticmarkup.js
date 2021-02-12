@@ -1,4 +1,4 @@
-/*! markdown-it-criticmarkup 0.0.1-3 https://github.com//GerHobbelt/markdown-it-criticmarkup @license ISC */
+/*! markdown-it-criticmarkup 0.0.1-4 https://github.com//GerHobbelt/markdown-it-criticmarkup @license ISC */
 
 /**
  * critic markup                HTML                    LaTeX

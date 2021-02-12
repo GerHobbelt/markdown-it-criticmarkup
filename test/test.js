@@ -39,7 +39,7 @@ function generate(fixturePath, md, env) {
 
 
 describe('markdown-it-abbr', function () {
-  const md = markdownit({ linkify: true })
+  const md = markdown_it({ linkify: true })
               .use(plugin);
 
   generate(path.join(__dirname, 'fixtures/critic.txt'), md);
