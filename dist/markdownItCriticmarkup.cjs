@@ -1,5 +1,7 @@
 /*! markdown-it-criticmarkup 0.0.1-6 https://github.com//GerHobbelt/markdown-it-criticmarkup @license ISC */
 
+'use strict';
+
 /**
  * critic markup                HTML                    LaTeX
     {--[text]--}            <del>[text]</del>                     \st{[text]}
@@ -18,7 +20,7 @@ function critcmarkup_plugin(md) {
           pos = state.pos;
 
     if (src[pos] === '{' && (src[pos + 1] === '-' && src[pos + 2] === '-' || src[pos + 1] === '+' && src[pos + 2] === '+' || src[pos + 1] === '~' && src[pos + 2] === '~' || src[pos + 1] === '=' && src[pos + 2] === '=' || src[pos + 1] === '>' && src[pos + 2] === '>')) {
-      let tag = src.slice(pos + 1, pos + 3);
+      const tag = src.slice(pos + 1, pos + 3);
       let closeTag = tag;
 
       if (closeTag[0] === '>') {
@@ -89,5 +91,5 @@ function critcmarkup_plugin(md) {
   };
 }
 
-export default critcmarkup_plugin;
-//# sourceMappingURL=markdownItCriticmarkup.modern.js.map
+module.exports = critcmarkup_plugin;
+//# sourceMappingURL=markdownItCriticmarkup.cjs.map

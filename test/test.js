@@ -20,7 +20,7 @@ function generate(fixturePath, md, env) {
   testgen.load(fixturePath, {}, function (data) {
     data.meta = data.meta || {};
 
-    let desc = data.meta.desc || path.relative(fixturePath, data.file);
+    const desc = data.meta.desc || path.relative(fixturePath, data.file);
 
     (data.meta.skip ? describe.skip : describe)(desc, function () {
       data.fixtures.forEach(function (fixture) {

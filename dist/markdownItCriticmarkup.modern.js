@@ -1,3 +1,5 @@
+/*! markdown-it-criticmarkup 0.0.1-6 https://github.com//GerHobbelt/markdown-it-criticmarkup @license ISC */
+
 /**
  * critic markup                HTML                    LaTeX
     {--[text]--}            <del>[text]</del>                     \st{[text]}
@@ -7,27 +9,18 @@
     {>>[text]<<}            <aside>[text]</aside>                 \marginpar{[text]}
   */
 
-
-
-
-
-
 /**
  * CriticMarkup rule
  */
-export default function critcmarkup_plugin(md) {
+function critcmarkup_plugin(md) {
   md.inline.ruler.before('strikethrough', 'critic-markup', (state, silent) => {
     const src = state.src,
           pos = state.pos;
-    if (src[pos] === '{' && (
-      (src[pos + 1] === '-' && src[pos + 2] === '-') ||
-        (src[pos + 1] === '+' && src[pos + 2] === '+') ||
-        (src[pos + 1] === '~' && src[pos + 2] === '~') ||
-        (src[pos + 1] === '=' && src[pos + 2] === '=') ||
-        (src[pos + 1] === '>' && src[pos + 2] === '>')
-    )) {
+
+    if (src[pos] === '{' && (src[pos + 1] === '-' && src[pos + 2] === '-' || src[pos + 1] === '+' && src[pos + 2] === '+' || src[pos + 1] === '~' && src[pos + 2] === '~' || src[pos + 1] === '=' && src[pos + 2] === '=' || src[pos + 1] === '>' && src[pos + 2] === '>')) {
       const tag = src.slice(pos + 1, pos + 3);
       let closeTag = tag;
+
       if (closeTag[0] === '>') {
         closeTag = '<<}';
       } else {
@@ -57,18 +50,19 @@ export default function critcmarkup_plugin(md) {
         const token = state.push('critic-markup');
         token.content = content;
         token.tag = tag;
-
         state.pos = end + closeTag.length;
         return true;
       }
+
       return false;
     }
+
     return false;
   });
-
   /**
    * CriticMarkup renderer
    */
+
   md.renderer.rules['critic-markup'] = (tokens, idx) => {
     const token = tokens[idx],
           tag = token.tag,
@@ -82,11 +76,18 @@ export default function critcmarkup_plugin(md) {
       return `<mark>${content}</mark>`;
     } else if (tag === '>>') {
       return `<aside>${content}</aside>`;
-    }  // {~~[text1]~>[text2]~~}
+    } // {~~[text1]~>[text2]~~}
+
+
     const arr = content.split('~>');
+
     if (arr.length === 2) {
       return `<del>${arr[0]}</del><ins>${arr[1]}</ins>`;
     }
+
     throw new Error(`Error: '~>' not found in critic markup chunk {~~${content}--}`);
   };
 }
+
+export default critcmarkup_plugin;
+//# sourceMappingURL=markdownItCriticmarkup.modern.js.map
