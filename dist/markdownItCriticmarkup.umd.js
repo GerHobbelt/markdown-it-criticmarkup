@@ -1,4 +1,4 @@
-/*! markdown-it-criticmarkup 0.0.1-6 https://github.com//GerHobbelt/markdown-it-criticmarkup @license ISC */
+/*! markdown-it-criticmarkup 0.0.1-7 https://github.com//GerHobbelt/markdown-it-criticmarkup @license ISC */
 
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
